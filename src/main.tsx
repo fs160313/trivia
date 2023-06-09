@@ -9,7 +9,9 @@ import {
 import { GameDataProvider } from "./providers/GameProvider/GameDataProvider.tsx";
 import { routes } from "./routes/routes.tsx";
 
-const router = createBrowserRouter(createRoutesFromElements(routes));
+const router = createBrowserRouter(createRoutesFromElements(routes), {
+  basename: "/trivia",
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
