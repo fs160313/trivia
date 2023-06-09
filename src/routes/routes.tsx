@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import { Admin } from "../components/Admin";
+import { Admin } from "../components/Admin/Admin";
 import { AppContainer } from "../components/AppContainer";
 import { GameContainer } from "../components/GameContainer";
 import { Board } from "../components/GameBoard/Board";

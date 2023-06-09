@@ -15,6 +15,7 @@ export const Hint = () => {
         color="white"
         border="1px solid white"
         padding="40px"
+        background="blue.700"
       >
         <Text
           fontSize="7xl"

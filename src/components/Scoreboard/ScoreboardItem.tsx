@@ -75,17 +75,16 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
         <EditableInput />
       </Editable>
       <Spacer />
-      {location.pathname === "/game/answer" && (
-        <IconButton
-          icon={<FiCheckCircle />}
-          variant="ghost"
-          color={scoreAdded ? "gold" : "white"}
-          colorScheme="whiteAlpha"
-          aria-label="Remove Player"
-          size="sm"
-          onClick={handleUpdateScore}
-        />
-      )}
+      <IconButton
+        icon={<FiCheckCircle />}
+        variant="ghost"
+        color={scoreAdded ? "gold" : "white"}
+        colorScheme="whiteAlpha"
+        aria-label="Remove Player"
+        size="sm"
+        onClick={handleUpdateScore}
+        visibility={location.pathname === "/game/answer" ? "visible" : "hidden"}
+      />
       <IconButton
         icon={<FiDelete />}
         variant="ghost"

@@ -4,6 +4,11 @@ import { QuestionStack } from "./QuestionStack";
 
 export const Board = () => {
   const { categories } = useGameData();
+
+  if (!categories.length) {
+    return null;
+  }
+
   return (
     <HStack
       spacing={0}

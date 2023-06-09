@@ -1,6 +1,6 @@
-import { useGameData } from "../providers/GameProvider/useGameData";
-import { Question } from "../types/question";
-import { fileToJson } from "../util/fileToJson";
+import { useGameData } from "../../providers/GameProvider/useGameData";
+import { Question } from "../../types/question";
+import { fileToJson } from "../../util/fileToJson";
 import { FileUploadButton } from "./FileUploadButton";
 
 function isQuestion(obj: unknown): obj is Question {
