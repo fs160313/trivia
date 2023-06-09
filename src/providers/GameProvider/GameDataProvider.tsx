@@ -7,6 +7,7 @@ export interface GameDataContextState {
   players: Player[];
   questions: Question[];
   categories: string[];
+  finalQuestion: Question | undefined;
   addPlayer: (playerName: string) => void;
   removePlayer: (playerToRemove: Player) => void;
   editPlayer: ({
@@ -21,6 +22,7 @@ export interface GameDataContextState {
   loadPlayers: (playerNames: string[]) => void;
   setQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
   setQuestionVisitStatus: (question: Question, visited: boolean) => void;
+  setFinalQuestion: React.Dispatch<React.SetStateAction<Question | undefined>>;
 }
 
 interface GameDataProviderProps {
@@ -36,6 +38,7 @@ export const GameDataProvider: React.FC<GameDataProviderProps> = ({
 }) => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [finalQuestion, setFinalQuestion] = useState<Question>();
 
   const addPlayer = (playerName: string) => {
     setPlayers([...players, { name: playerName, score: 0 }]);
@@ -105,14 +108,16 @@ export const GameDataProvider: React.FC<GameDataProviderProps> = ({
     <GameDataContext.Provider
       value={{
         players,
+        categories,
         questions,
+        finalQuestion,
         addPlayer,
         removePlayer,
         editPlayer,
         loadPlayers,
         setQuestions,
         setQuestionVisitStatus,
-        categories,
+        setFinalQuestion,
       }}
     >
       {children}

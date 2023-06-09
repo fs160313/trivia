@@ -7,11 +7,11 @@ interface CategoryCalloutProps {
 export const CategoryCallout = ({ category }: CategoryCalloutProps) => {
   return (
     <Flex
-      width="100%"
-      height="100%"
       background="blue.700"
       align="center"
       justify="center"
+      flex={1}
+      width="100%"
     >
       <Text
         bg="blue.700"

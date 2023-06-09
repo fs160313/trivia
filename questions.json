@@ -118,5 +118,12 @@
     "answer": "Russia",
     "value": 500,
     "category": "Geography"
+  },
+  {
+    "hint": "among us?",
+    "answer": "YES",
+    "value": 0,
+    "category": "games taht are epic",
+    "final": true
   }
 ]

@@ -14,7 +14,7 @@ export const QuestionStack = ({ category }: QuestionStackProps) => {
     .sort((a, b) => a.value - b.value);
 
   return (
-    <VStack width="100%" height="100%" spacing={0} divider={<StackDivider />}>
+    <VStack spacing={0} divider={<StackDivider />} flex={1} height="100%">
       <CategoryCallout category={category} />
       {questionsInCategory.map((question) => (
         <QuestionCallout question={question} />

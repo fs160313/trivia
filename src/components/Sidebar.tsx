@@ -1,10 +1,10 @@
 import {
-  Box,
   VStack,
   Button,
   ButtonProps,
   Link,
   HStack,
+  Flex,
 } from "@chakra-ui/react";
 import { ReactComponentElement } from "react";
 import { IconType } from "react-icons";
@@ -41,25 +41,25 @@ const SidebarItem = (props: SidebarItemProps) => {
 
 export const Sidebar = () => {
   return (
-    <Box
+    <Flex
       bg="blue.700"
-      w="400px"
-      h="100vh"
+      height="100%"
       borderRight="1px solid white"
       display="flex"
       flexDirection="column"
       alignItems="center"
       boxShadow="lg"
       color="gold"
-      paddingInline="10px"
+      padding={8}
+      flexShrink={1}
     >
       <VStack>
-        <HStack spacing={4} p={4} align="stretch">
+        <HStack spacing={4} align="stretch">
           <SidebarItem icon={<FiHome />} label="Home" to="game" />
           <SidebarItem icon={<FiSettings />} label="Settings" to="admin" />
         </HStack>
         <Scoreboard />
       </VStack>
-    </Box>
+    </Flex>
   );
 };

@@ -26,17 +26,25 @@ function isQuestionArray(obj: unknown): obj is Question[] {
 }
 
 export const QuestionUploadButton = () => {
-  const { setQuestions } = useGameData();
+  const { setQuestions, setFinalQuestion } = useGameData();
 
   const handleQuestionsUpload = (file: File) => {
     fileToJson(file).then((jsonBlob) => {
       if (!isQuestionArray(jsonBlob)) {
         throw new Error(
-          "error when parsing uploaded questions file, ensure it is properly formatted"
+          "Error when parsing uploaded questions file, ensure it is properly formatted."
         );
       }
 
-      setQuestions(jsonBlob);
+      const questions = jsonBlob.filter((question) => !question.final);
+      const finalQuestion = jsonBlob.find((question) => question.final);
+
+      if (!questions.length || !finalQuestion) {
+        throw new Error("No questions provided or final question not found.");
+      }
+
+      setQuestions(questions);
+      setFinalQuestion(finalQuestion);
     });
   };
 

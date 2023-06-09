@@ -11,14 +11,12 @@ export const QuestionCallout = ({ question }: QuestionCalloutProps) => {
   const { setQuestionVisitStatus } = useGameData();
   return (
     <Link
-      to="hint"
+      to="/game/hint"
       state={{ question }}
       onClick={(e) => question.visited && e.preventDefault()}
-      style={{ width: "100%", height: "100%" }}
+      style={{ display: "flex", flex: 1, width: "100%" }}
     >
       <Flex
-        width="100%"
-        height="100%"
         background="blue.700"
         onClick={() => setQuestionVisitStatus(question, true)}
         onContextMenu={(e) => {
@@ -28,6 +26,7 @@ export const QuestionCallout = ({ question }: QuestionCalloutProps) => {
         align="center"
         justify="center"
         opacity={question.visited ? "25%" : "100%"}
+        flex={1}
       >
         <Text
           bg="blue.700"

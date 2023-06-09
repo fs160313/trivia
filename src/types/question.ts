@@ -1,7 +1,8 @@
 export interface Question {
   hint: string;
   answer: string;
-  value: number;
   category: string;
+  value: number;
   visited?: boolean;
+  final?: boolean;
 }

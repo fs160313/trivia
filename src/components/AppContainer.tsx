@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
-import { Box, HStack } from "@chakra-ui/react";
+import { Flex, HStack } from "@chakra-ui/react";
 
 export const AppContainer = () => {
   return (
-    <HStack spacing="0">
+    <HStack spacing="0" height="100vh">
       <Sidebar />
-      <Box bg="blue.900" p={"12"} w="100%" h="100vh">
+      <Flex bg="blue.900" p={"12"} flex={1} height="100%">
         <Outlet />
-      </Box>
+      </Flex>
     </HStack>
   );
 };

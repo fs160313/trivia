@@ -5,16 +5,13 @@ import { QuestionStack } from "./QuestionStack";
 export const Board = () => {
   const { categories } = useGameData();
 
-  if (!categories.length) {
-    return null;
-  }
-
   return (
     <HStack
       spacing={0}
       divider={<StackDivider />}
       border="1px solid white"
-      height="100%"
+      flex={1}
+      width="100%"
     >
       {categories.map((category) => (
         <QuestionStack category={category} />
