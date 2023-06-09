@@ -66,7 +66,7 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
       <div>-</div>
       <Editable
         key={player.score}
-        defaultValue={player.score.toString()}
+        defaultValue={`$${player.score.toString()}`}
         onSubmit={(newScore: string) =>
           editPlayer({ playerToEdit: player, newScore: parseInt(newScore) })
         }
