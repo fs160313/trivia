@@ -1,0 +1,122 @@
+[
+  {
+    "hint": "Who wrote the novel 'To Kill a Mockingbird'?",
+    "answer": "Harper Lee",
+    "value": 100,
+    "category": "Literature"
+  },
+  {
+    "hint": "In which book series would you find the characters Harry Potter and Hermione Granger?",
+    "answer": "Harry Potter",
+    "value": 200,
+    "category": "Literature"
+  },
+  {
+    "hint": "Who is the author of 'Pride and Prejudice'?",
+    "answer": "Jane Austen",
+    "value": 300,
+    "category": "Literature"
+  },
+  {
+    "hint": "Which classic novel by F. Scott Fitzgerald features the character Jay Gatsby?",
+    "answer": "The Great Gatsby",
+    "value": 400,
+    "category": "Literature"
+  },
+  {
+    "hint": "In George Orwell's novel '1984', what is the totalitarian regime called?",
+    "answer": "Big Brother",
+    "value": 500,
+    "category": "Literature"
+  },
+  {
+    "hint": "Who painted the famous artwork 'Mona Lisa'?",
+    "answer": "Leonardo da Vinci",
+    "value": 100,
+    "category": "Art"
+  },
+  {
+    "hint": "Which artist is known for his 'Campbell's Soup Cans' artwork?",
+    "answer": "Andy Warhol",
+    "value": 200,
+    "category": "Art"
+  },
+  {
+    "hint": "Which Dutch painter was known for his use of vibrant colors and his sunflower paintings?",
+    "answer": "Vincent van Gogh",
+    "value": 300,
+    "category": "Art"
+  },
+  {
+    "hint": "Who sculpted the famous statue of 'David'?",
+    "answer": "Michelangelo",
+    "value": 400,
+    "category": "Art"
+  },
+  {
+    "hint": "Which artist is associated with the painting 'The Persistence of Memory' featuring melting clocks?",
+    "answer": "Salvador Dali",
+    "value": 500,
+    "category": "Art"
+  },
+  {
+    "hint": "Which planet is known as the 'Red Planet'?",
+    "answer": "Mars",
+    "value": 100,
+    "category": "Science"
+  },
+  {
+    "hint": "What is the chemical symbol for the element gold?",
+    "answer": "Au",
+    "value": 200,
+    "category": "Science"
+  },
+  {
+    "hint": "Who developed the theory of relativity?",
+    "answer": "Albert Einstein",
+    "value": 300,
+    "category": "Science"
+  },
+  {
+    "hint": "What is the largest planet in our solar system?",
+    "answer": "Jupiter",
+    "value": 400,
+    "category": "Science"
+  },
+  {
+    "hint": "What is the smallest unit of matter?",
+    "answer": "Atom",
+    "value": 500,
+    "category": "Science"
+  },
+  {
+    "hint": "Which city is known as the 'Big Apple'?",
+    "answer": "New York City",
+    "value": 100,
+    "category": "Geography"
+  },
+  {
+    "hint": "Which country is famous for the Eiffel Tower?",
+    "answer": "France",
+    "value": 200,
+    "category": "Geography"
+  },
+  {
+    "hint": "Which African country is home to the pyramids of Giza?",
+    "answer": "Egypt",
+    "value": 300,
+    "category": "Geography"
+  },
+  {
+    "hint": "What is the capital city of Australia?",
+    "answer": "Canberra",
+    "value": 400,
+    "category": "Geography"
+  },
+  {
+    "hint": "Which country is the largest in area?",
+    "answer": "Russia",
+    "value": 500,
+    "category": "Geography"
+  }
+]
