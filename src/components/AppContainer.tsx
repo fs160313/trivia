@@ -6,7 +6,7 @@ export const AppContainer = () => {
   return (
     <HStack spacing="0" height="100vh">
       <Sidebar />
-      <Flex bg="blue.900" p={"12"} flex={1} height="100%">
+      <Flex bg="blue.900" p={8} flex={1} height="100%">
         <Outlet />
       </Flex>
     </HStack>

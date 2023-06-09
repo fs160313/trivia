@@ -11,11 +11,11 @@ import { useRef, useState } from "react";
 
 export const AddPlayer = () => {
   const nameInputRef = useRef<HTMLInputElement>(null);
-  const { addPlayer } = useGameData();
+  const { addPlayer, players } = useGameData();
   const [playerName, setPlayerName] = useState("");
 
   const handleAddPlayer = () => {
-    if (playerName) {
+    if (playerName && !players.find((player) => player.name === playerName)) {
       addPlayer(playerName);
       setPlayerName("");
       nameInputRef.current?.focus();

@@ -18,12 +18,13 @@ export const FlashCardBody = (props: FlashCardBodyProps) => {
       border="1px solid white"
       padding="40px"
       background="blue.700"
+      overflow={"auto"}
     >
       <Text fontSize="7xl" fontWeight={"bold"}>
         {headerText}
       </Text>
       <Flex align="center" flex="1">
-        <Text fontSize="7xl" align="center">
+        <Text fontSize="5xl" align="center">
           {bodyText}
         </Text>
       </Flex>

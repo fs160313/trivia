@@ -8,13 +8,13 @@ export const Category = () => {
   const { question }: { question: Question } = location.state;
   const headerText = "FINAL";
   const bodyText = question.category;
-  const footerText = "Click anywhere to return to the board";
+  const footerText = "Click anywhere to proceed to the final question";
 
   return (
     <Link
       to={"/game/hint"}
       state={{ question }}
-      style={{ display: "flex", flex: 1, width: "100%" }}
+      style={{ display: "flex", flex: 1, width: "100%", overflow: "auto" }}
     >
       <FlashCardBody
         headerText={headerText}

@@ -15,7 +15,7 @@ export const Hint = () => {
     <Link
       to={"/game/answer"}
       state={{ question }}
-      style={{ display: "flex", flex: 1, width: "100%" }}
+      style={{ display: "flex", flex: 1, width: "100%", overflow: "auto" }}
     >
       <FlashCardBody
         headerText={headerText}
