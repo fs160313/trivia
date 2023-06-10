@@ -24,7 +24,7 @@ export const AddPlayer = () => {
 
   return (
     <HStack>
-      <InputGroup transition="all 1s">
+      <InputGroup>
         <Input
           placeholder="Player Name"
           onChange={(e) => {

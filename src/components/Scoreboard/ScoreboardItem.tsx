@@ -52,7 +52,7 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
   };
 
   return (
-    <HStack width="100%" fontSize="1xl">
+    <HStack fontSize="1xl">
       <Editable
         key={player.name}
         defaultValue={player.name}
