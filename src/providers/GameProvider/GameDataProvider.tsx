@@ -41,7 +41,10 @@ export const GameDataProvider: React.FC<GameDataProviderProps> = ({
   const [finalQuestion, setFinalQuestion] = useState<Question>();
 
   const addPlayer = (playerName: string) => {
-    setPlayers([...players, { name: playerName, score: 0 }]);
+    setPlayers([
+      ...players,
+      { name: playerName, score: 0, id: crypto.randomUUID() },
+    ]);
   };
 
   const removePlayer = (playerToRemove: Player) => {
@@ -88,7 +91,11 @@ export const GameDataProvider: React.FC<GameDataProviderProps> = ({
 
   const loadPlayers = (playerNames: string[]) => {
     setPlayers(
-      playerNames.map((playerName) => ({ name: playerName, score: 0 }))
+      playerNames.map((playerName) => ({
+        name: playerName,
+        score: 0,
+        id: crypto.randomUUID(),
+      }))
     );
   };
 

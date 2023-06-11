@@ -12,6 +12,9 @@ import { Player } from "../../types/player";
 import { useGameData } from "../../providers/GameProvider/useGameData";
 import { Question } from "../../types/question";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+const MotionEditable = motion(Editable);
 
 interface ScoreboardItemProps {
   player: Player;
@@ -64,16 +67,26 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
         <EditableInput />
       </Editable>
       <div>-</div>
-      <Editable
-        key={player.score}
-        defaultValue={`$${player.score.toString()}`}
-        onSubmit={(newScore: string) =>
-          editPlayer({ playerToEdit: player, newScore: parseInt(newScore) })
-        }
-      >
-        <EditablePreview />
-        <EditableInput />
-      </Editable>
+      <AnimatePresence mode="wait">
+        <MotionEditable
+          key={player.score.toString()}
+          defaultValue={`$${player.score.toString()}`}
+          onSubmit={(newScore: string) =>
+            editPlayer({ playerToEdit: player, newScore: parseInt(newScore) })
+          }
+          initial={{
+            opacity: 0,
+            y: "-25%",
+          }}
+          animate={{ opacity: 100, y: 0 }}
+          exit={{ opacity: 0, y: "25%", color: scoreAdded ? "red" : "green" }}
+          transition={{ duration: 0.5 }}
+        >
+          <EditablePreview />
+          <EditableInput />
+        </MotionEditable>
+        /
+      </AnimatePresence>
       <Spacer />
       <IconButton
         icon={<FiCheckCircle />}

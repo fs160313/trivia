@@ -12,7 +12,7 @@ export const Scoreboard = () => {
       <AnimatePresence>
         {players.map((player) => (
           <motion.div
-            key={player.name}
+            key={player.id}
             initial={{ x: "-100%" }}
             animate={{ x: "0" }}
             exit={{ x: "-100%" }}
