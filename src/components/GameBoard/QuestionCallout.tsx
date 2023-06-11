@@ -2,6 +2,9 @@ import { Flex, Text } from "@chakra-ui/react";
 import { Question } from "../../types/question";
 import { Link } from "react-router-dom";
 import { useGameData } from "../../providers/GameProvider/useGameData";
+import { motion } from "framer-motion";
+
+const MotionFlex = motion(Flex);
 
 interface QuestionCalloutProps {
   question: Question;
@@ -16,7 +19,7 @@ export const QuestionCallout = ({ question }: QuestionCalloutProps) => {
       onClick={(e) => question.visited && e.preventDefault()}
       style={{ display: "flex", flex: 1, width: "100%" }}
     >
-      <Flex
+      <MotionFlex
         background="blue.700"
         onClick={() => setQuestionVisitStatus(question, true)}
         onContextMenu={(e) => {
@@ -27,9 +30,18 @@ export const QuestionCallout = ({ question }: QuestionCalloutProps) => {
         justify="center"
         opacity={question.visited ? "25%" : "100%"}
         flex={1}
+        whileHover={
+          !question.visited && {
+            boxShadow: "inset 0 0 10px black",
+          }
+        }
+        whileTap={
+          !question.visited && {
+            boxShadow: "inset 0 0 30px black",
+          }
+        }
       >
         <Text
-          bg="blue.700"
           color="gold"
           fontSize="5xl"
           fontWeight="bold"
@@ -38,7 +50,7 @@ export const QuestionCallout = ({ question }: QuestionCalloutProps) => {
         >
           ${question.value}
         </Text>
-      </Flex>
+      </MotionFlex>
     </Link>
   );
 };

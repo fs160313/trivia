@@ -1,6 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useGameData } from "../providers/GameProvider/useGameData";
+import { motion } from "framer-motion";
+
+const MotionFlex = motion(Flex);
 
 export const FinalCallout = () => {
   const { finalQuestion } = useGameData();
@@ -11,12 +14,18 @@ export const FinalCallout = () => {
       state={{ question: finalQuestion }}
       style={{ display: "flex" }}
     >
-      <Flex
+      <MotionFlex
         background="blue.700"
         border="1px solid white"
         align="center"
         justify="center"
         flex={1}
+        whileHover={{
+          scale: 1.05,
+        }}
+        whileTap={{
+          scale: 0.95,
+        }}
       >
         <Text
           bg="blue.700"
@@ -28,7 +37,7 @@ export const FinalCallout = () => {
         >
           FINAL
         </Text>
-      </Flex>
+      </MotionFlex>
     </Link>
   );
 };
