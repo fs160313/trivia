@@ -2,17 +2,19 @@ import {
   Editable,
   EditableInput,
   EditablePreview,
+  Flex,
   HStack,
   IconButton,
   Spacer,
+  Text,
 } from "@chakra-ui/react";
 import { FiDelete, FiCheckCircle } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import { Player } from "../../types/player";
 import { useGameData } from "../../providers/GameProvider/useGameData";
 import { Question } from "../../types/question";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion } from "framer-motion";
 
 const MotionEditable = motion(Editable);
 
@@ -24,7 +26,63 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
   const { editPlayer, removePlayer } = useGameData();
   const [question, setQuestion] = useState<Question>();
   const [scoreAdded, setScoreAdded] = useState(false);
+  const scoreDisplayRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  const animateAndAddScore = () => {
+    const scoreDisplay = scoreDisplayRef.current;
+
+    if (!question || !scoreDisplay) {
+      return;
+    }
+
+    scoreDisplay.setAttribute("style", "color: green");
+
+    animate(
+      scoreDisplay,
+      { y: [0, -10], opacity: [1, 0] },
+      { duration: 0.4 }
+    ).then(() => {
+      editPlayer({
+        playerToEdit: player,
+        newScore: player.score + question.value,
+      });
+
+      animate(
+        scoreDisplay,
+        { y: [10, 0], opacity: [0, 1] },
+        { duration: 0.4 }
+      ).then(() => scoreDisplay.setAttribute("style", "color: gold"));
+      setScoreAdded(true);
+    });
+  };
+
+  const animateAndSubtractScore = () => {
+    const scoreDisplay = scoreDisplayRef.current;
+
+    if (!question || !scoreDisplay) {
+      return;
+    }
+
+    scoreDisplay.setAttribute("style", "color: red");
+
+    animate(
+      scoreDisplay,
+      { y: [0, 10], opacity: [1, 0] },
+      { duration: 0.4 }
+    ).then(() => {
+      editPlayer({
+        playerToEdit: player,
+        newScore: player.score - question.value,
+      });
+      animate(
+        scoreDisplay,
+        { y: [-10, 0], opacity: [0, 1] },
+        { duration: 0.4 }
+      ).then(() => scoreDisplay.setAttribute("style", "color: gold"));
+      setScoreAdded(false);
+    });
+  };
 
   useEffect(() => {
     setScoreAdded(false);
@@ -34,25 +92,6 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
       setQuestion(undefined);
     }
   }, [location]);
-
-  const handleUpdateScore = () => {
-    if (!question) {
-      return;
-    }
-    if (!scoreAdded) {
-      editPlayer({
-        playerToEdit: player,
-        newScore: player.score + question.value,
-      });
-      setScoreAdded(true);
-    } else {
-      editPlayer({
-        playerToEdit: player,
-        newScore: player.score - question.value,
-      });
-      setScoreAdded(false);
-    }
-  };
 
   return (
     <HStack fontSize="1xl">
@@ -67,26 +106,19 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
         <EditableInput />
       </Editable>
       <div>-</div>
-      <AnimatePresence mode="wait">
+      <Flex ref={scoreDisplayRef}>
+        <Text paddingBlock="4px">$</Text>
         <MotionEditable
-          key={player.score.toString()}
-          defaultValue={`$${player.score.toString()}`}
-          onSubmit={(newScore: string) =>
+          value={player.score.toString()}
+          onChange={(newScore: string) =>
+            parseInt(newScore) &&
             editPlayer({ playerToEdit: player, newScore: parseInt(newScore) })
           }
-          initial={{
-            opacity: 0,
-            y: "-25%",
-          }}
-          animate={{ opacity: 100, y: 0 }}
-          exit={{ opacity: 0, y: "25%", color: scoreAdded ? "red" : "green" }}
-          transition={{ duration: 0.5 }}
         >
           <EditablePreview />
           <EditableInput />
         </MotionEditable>
-        /
-      </AnimatePresence>
+      </Flex>
       <Spacer />
       <IconButton
         icon={<FiCheckCircle />}
@@ -95,7 +127,7 @@ export const ScoreboardItem = ({ player }: ScoreboardItemProps) => {
         colorScheme="whiteAlpha"
         aria-label="Remove Player"
         size="sm"
-        onClick={handleUpdateScore}
+        onClick={scoreAdded ? animateAndSubtractScore : animateAndAddScore}
         visibility={location.pathname === "/game/answer" ? "visible" : "hidden"}
       />
       <IconButton

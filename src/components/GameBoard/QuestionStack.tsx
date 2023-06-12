@@ -16,8 +16,8 @@ export const QuestionStack = ({ category }: QuestionStackProps) => {
   return (
     <VStack spacing={0} divider={<StackDivider />} flex={1} height="100%">
       <CategoryCallout category={category} />
-      {questionsInCategory.map((question) => (
-        <QuestionCallout question={question} />
+      {questionsInCategory.map((question, index) => (
+        <QuestionCallout question={question} key={index} />
       ))}
     </VStack>
   );

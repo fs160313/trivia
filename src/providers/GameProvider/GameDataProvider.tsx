@@ -48,7 +48,7 @@ export const GameDataProvider: React.FC<GameDataProviderProps> = ({
   };
 
   const removePlayer = (playerToRemove: Player) => {
-    setPlayers(players.filter((player) => !isEqual(player, playerToRemove)));
+    setPlayers(players.filter((player) => !(player.id === playerToRemove.id)));
   };
 
   const editPlayer = ({
@@ -60,19 +60,21 @@ export const GameDataProvider: React.FC<GameDataProviderProps> = ({
     newScore?: number;
     newName?: string;
   }) => {
-    const playerIndex = players.findIndex((player) =>
-      isEqual(player, playerToEdit)
-    );
-    const newPlayer: Player = {
-      ...playerToEdit,
-      score: newScore !== undefined ? newScore : playerToEdit.score,
-      name: newName !== undefined ? newName : playerToEdit.name,
-    };
-    setPlayers([
-      ...players.slice(0, playerIndex),
-      newPlayer,
-      ...players.slice(playerIndex + 1),
-    ]);
+    setPlayers((prevPlayers) => {
+      const playerIndex = prevPlayers.findIndex(
+        (player) => player.id === playerToEdit.id
+      );
+
+      const updatedPlayers = [...prevPlayers];
+      const updatedPlayer = {
+        ...playerToEdit,
+        score: newScore !== undefined ? newScore : playerToEdit.score,
+        name: newName !== undefined ? newName : playerToEdit.name,
+      };
+
+      updatedPlayers[playerIndex] = updatedPlayer;
+      return updatedPlayers;
+    });
   };
 
   const setQuestionVisitStatus = (

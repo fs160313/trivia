@@ -13,8 +13,8 @@ export const Board = () => {
       flex={1}
       width="100%"
     >
-      {categories.map((category) => (
-        <QuestionStack category={category} />
+      {categories.map((category, index) => (
+        <QuestionStack category={category} key={index} />
       ))}
     </HStack>
   );
